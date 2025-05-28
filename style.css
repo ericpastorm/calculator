@@ -1,0 +1,118 @@
+body{
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+.mainDiv {
+    flex: 1;
+    min-height: 100vh;  
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: #12CBC4;
+}
+.calcuDiv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 60%;
+    min-height: 60%;
+    width: 330px;
+    min-width: 330px;
+    padding: 20px;
+    color: #006266;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: #1e272e;
+    gap: 10px;
+}
+.screenDiv{
+    display: flex;
+    background-color: #27333c;
+    height: 20%;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.btnDiv{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+.numbersDiv{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    flex-wrap: wrap;
+    gap: 10px
+}
+.btn-nmb{
+    background-color: #485460;
+    color: azure;
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    border: 0px;
+    font-weight: 100;
+    font-size: 30px;
+}
+#btn0{
+
+    background-color: #485460;
+}
+.operatorsDiv{
+    display: flex;
+    text-align: right;
+    justify-content: right;
+    align-items: right;
+    align-content: right;
+    flex-wrap: wrap;
+    width: 75px;
+    gap: 10px
+}
+.btn-opt{
+    background-color: #ffd32a;
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    border: 0px;
+    font-weight: 100;
+    font-size: 30px;
+    color: rgb(47, 47, 47)
+}
+button{
+    transition: font-size 0.1s ease;
+}
+button:hover {
+    cursor: pointer;
+}
+button:active {
+    font-size: 22px;
+}
+#btnresult{
+    width: 100%;
+}
+#btndel{
+    background-color: #ff5e57;
+    color: azure;
+}
+@media (max-width: 768px) {  /* Para móviles */
+.calcuDiv {
+    height: 70%;
+    min-height: 70%;
+}
+}
