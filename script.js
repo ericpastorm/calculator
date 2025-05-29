@@ -38,18 +38,35 @@ function operate(numa, numb, operator){
             break;
     }
     num1 = +resultTot;
-    num1Done = true;
+    num1Done = false;
     num2 = 0;
-    num2Done = true;
+    num2Done = false;
     operator = "";
     allDone = false;
+    sizeFontDinamic();
 }
 function roundNumbers(num){
  if(!Number.isInteger(num)){
     resultTot = resultTot.toFixed(1);
  } else {
-
+    resultTot = resultTot.toFixed(0);
  }
+ if(String(resultTot).length >= 16){
+        resultTot = Number(resultTot).toExponential(10);
+ }
+}
+function sizeFontDinamic(){
+    if(txtScreen.textContent.length < 12){
+        txtScreen.style.fontSize = "35px";
+    } else if(txtScreen.textContent.length > 12 && txtScreen.textContent.length < 16){
+        txtScreen.style.fontSize = "32px";
+    } else if(txtScreen.textContent.length > 16 && txtScreen.textContent.length < 20){
+        txtScreen.style.fontSize = "25px";
+    } else if(txtScreen.textContent.length > 20 && txtScreen.textContent.length < 24){
+        txtScreen.style.fontSize = "20px";
+    } else if(txtScreen.textContent.length > 24 && txtScreen.textContent.length < 40){
+        txtScreen.style.fontSize = "16px";
+    } 
 }
 function displayText(str, add){
     if(!num1Done){
@@ -91,10 +108,12 @@ const concatenateNumbers = function(num1, num2) {
 };
 function addNumbers(num){
     if(!num1Done){
+        sizeFontDinamic();
         num1 = concatenateNumbers(num1, num);
         displayText(num1, false);
         num1 = +num1;
     } else if(!num2Done){
+        sizeFontDinamic()
         num2 = concatenateNumbers(num2, num);
         displayText(num2, true)
         num2 = +num2;
@@ -122,6 +141,7 @@ function cleanAll(){
     strScreen = "";
     allDone = false;
     decimal = false;
+    sizeFontDinamic();
 }
 function deleteOne(){
     if(!num1Done){
@@ -130,8 +150,13 @@ function deleteOne(){
         } else {
             let tmp = txtScreen.textContent.slice(0, -1);
             displayText(tmp, false)
-            let tmpNum = +String(num1).slice(0, -1);
-            num1 = tmpNum;
+            if(!decimal){
+                let tmpNum = +String(num1).slice(0, -1);
+                num1 = tmpNum;
+                displayText(num1, false)
+            } else {
+                decimal = false;
+            }
             if(num1 == 0){
                 displayText(num1, false)
             }
@@ -142,8 +167,13 @@ function deleteOne(){
         } else {
             let tmp = txtScreen.textContent.slice(0, -1);
             displayText(tmp, false)
-            let tmpNum = +String(num2).slice(0, -1);
-            num2 = tmpNum;
+            if(!decimal){
+                let tmpNum = +String(num2).slice(0, -1);
+                num2 = tmpNum;
+                displayText(num2, true)
+            }else {
+                decimal = false;
+            }
             if(num2 == 0){
                 displayText(num2, true)
             }
@@ -152,12 +182,12 @@ function deleteOne(){
 }
 function makeDecimals(){
     if(!num1Done){
-        if(Number.isInteger(num1)){
+        if(Number.isInteger(num1) && !decimal){
         decimal = true;
         displayText(".", true)
         }
     } else if(!num2Done){
-        if(Number.isInteger(num2)){
+        if(Number.isInteger(num2) && !decimal){
         decimal = true;
         displayText(".", true)
         }
